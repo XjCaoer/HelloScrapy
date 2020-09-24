@@ -16,7 +16,7 @@ NEWSPIDER_MODULE = 'HelloScrapy.spiders'
 # USER_AGENT = 'HelloScrapy (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
@@ -61,9 +61,12 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'HelloScrapy.pipelines.HelloscrapyPipeline': 300,
-# }
+ITEM_PIPELINES = {
+   # 'HelloScrapy.pipelines.HelloscrapyPipeline': 300,
+   'scrapy.pipelines.images.ImagesPipeline':1
+}
+IMAGES_STORE = 'images'
+IMAGES_URLS_FIELD = 'src'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

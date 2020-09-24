@@ -1,7 +1,7 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
-
+from HelloScrapy.items import TutorialItem
 
 class MySpider(CrawlSpider):
 	name = 'yiibai'
@@ -18,8 +18,7 @@ class MySpider(CrawlSpider):
 	
 	def parse_item(self, response):
 		self.log('Hi, this is an item page! %s' % response.url)
-		
-		item = scrapy.Item()
+		item = TutorialItem()
 		item['id'] = response.xpath('//td[@id="item_id"]/text()').re(r'ID: (\d+)')
 		item['name'] = response.xpath('//td[@id="item_name"]/text()').extract()
 		item['description'] = response.xpath('//td[@id="item_description"]/text()').extract()
